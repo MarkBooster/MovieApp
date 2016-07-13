@@ -9,7 +9,7 @@
         <!--MainVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainVC" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainVC" id="BYZ-38-t0r" customClass="MainVC" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -40,6 +40,9 @@
                                         <state key="normal" title="Add">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Coy-hf-FtV"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -55,14 +58,14 @@
                                 <rect key="frame" x="0.0" y="70" width="600" height="530"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="120" id="0nF-ZE-tdB" customClass="Cell" customModule="MovieApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="120" id="0nF-ZE-tdB" customClass="MovieCell" customModule="MovieApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0nF-ZE-tdB" id="19R-mX-2gQ">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2du-lv-T28">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testImg" translatesAutoresizingMaskIntoConstraints="NO" id="2du-lv-T28">
                                                     <rect key="frame" x="8" y="10" width="100" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="MfJ-b4-tKX"/>
@@ -111,6 +114,12 @@
                                                 <constraint firstItem="dMq-Iq-X1d" firstAttribute="leading" secondItem="2du-lv-T28" secondAttribute="trailing" constant="8" id="rRW-dW-VM0"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="movieImg" destination="2du-lv-T28" id="Kqz-cx-cUB"/>
+                                            <outlet property="movieOpinion" destination="fWM-YQ-9v4" id="YSe-aF-9Ta"/>
+                                            <outlet property="movieTitle" destination="wqr-6m-Mqe" id="cWm-vr-iCF"/>
+                                            <outlet property="movieUrl" destination="dMq-Iq-X1d" id="IOc-lI-azi"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -128,6 +137,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="A6a-q9-iLA" id="H0H-vB-V3V"/>
+                        <segue destination="i5J-Cy-u5v" kind="show" identifier="AddVC" id="E6e-LX-9X7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -137,7 +147,7 @@
         <!--DetailVC-->
         <scene sceneID="YXs-4q-dQZ">
             <objects>
-                <viewController id="NlQ-0K-6fb" customClass="DetailVC" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailVC" id="NlQ-0K-6fb" customClass="DetailVC" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yUq-ej-5NY"/>
                         <viewControllerLayoutGuide type="bottom" id="DBb-dV-YhF"/>
@@ -250,7 +260,7 @@
         <!--AddVC-->
         <scene sceneID="Phq-Ej-43X">
             <objects>
-                <viewController id="i5J-Cy-u5v" customClass="AddVC" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddVC" id="i5J-Cy-u5v" customClass="AddVC" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2FX-tU-pwj"/>
                         <viewControllerLayoutGuide type="bottom" id="ZB1-P0-DDd"/>
@@ -272,6 +282,9 @@
                                         <state key="normal" title="Back">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="backBtnPressed:" destination="i5J-Cy-u5v" eventType="touchUpInside" id="3ik-3a-q3L"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a Movie" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ff3-Pm-0mM">
                                         <rect key="frame" x="243" y="20" width="113" height="40"/>
@@ -292,7 +305,7 @@
                                     <constraint firstItem="ff3-Pm-0mM" firstAttribute="top" secondItem="Y14-cN-UfC" secondAttribute="top" constant="20" id="pG0-nR-wQO"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="URL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6x4-FT-brO">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://www.imdb.com/title/tt1375666/?ref_=tt_rec_tt" borderStyle="roundedRect" placeholder="URL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6x4-FT-brO">
                                 <rect key="frame" x="20" y="170" width="560" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="YNW-qO-fUe"/>
@@ -316,6 +329,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Confirm"/>
+                                <connections>
+                                    <action selector="confirmBtnPressed:" destination="i5J-Cy-u5v" eventType="touchUpInside" id="nbP-uM-yvt"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -333,10 +349,18 @@
                             <constraint firstItem="2VF-0K-hk8" firstAttribute="top" secondItem="qYS-uU-VjD" secondAttribute="bottom" constant="60" id="ugj-ki-oG6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="movieOpinion" destination="qYS-uU-VjD" id="TCf-pb-Y95"/>
+                        <outlet property="movieUrl" destination="6x4-FT-brO" id="PGZ-e9-48r"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="MainVC" id="dMo-S4-fpT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FxL-cN-ca8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1550" y="365"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="testImg" width="1182" height="665"/>
+    </resources>
 </document>

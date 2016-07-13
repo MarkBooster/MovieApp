@@ -12,15 +12,19 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var movies = [String]()
+    var movies = [Movie]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
         
-        movies.append("Test")
+        var movie1 = Movie(movieImg: "", movieTitle: "The Lord of the Rings", movieOpinion: "Dit is de beste film ooit gemaakt.", movieUrl: "http://www.lotr.com/")
+        var movie2 = Movie(movieImg: "", movieTitle: "Transformers", movieOpinion: "Leuke popcorn film.", movieUrl: "http://www.transformers.com/")
+        movies.append(movie1)
+        movies.append(movie2)
         
+        tableView.reloadData()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -28,15 +32,29 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        movies.count
+        return movies.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        <#code#>
+        let movie = movies[indexPath.row]
+        if let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell") as? MovieCell {
+            cell.configureCell(movie)
+            return cell
+        } else {
+            let cell = MovieCell()
+            cell.configureCell(movie)
+            return cell
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        <#code#>
+        
+    }
+    
+    @IBAction func addBtnPressed(sender: UIButton) {
+        performSegueWithIdentifier("AddVC", sender: nil)
+//        let AddVC = storyboard?.instantiateViewControllerWithIdentifier("AddVC")
+//        presentViewController(AddVC!, animated: true, completion: nil)
     }
 
 
