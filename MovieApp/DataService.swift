@@ -7,5 +7,50 @@
 //
 
 import Foundation
+import UIKit
+
+class DataService {
+    
+    static let instance = DataService()
+    
+    private var _loadedMovies = [Movie]()
+    
+    let KEY_MOVIES = "movies"
+    
+    var loadedMovies: [Movie] {
+        return _loadedMovies
+    }
+    
+    func saveMovies() {
+        let moviesData = NSKeyedArchiver.archivedDataWithRootObject(_loadedMovies)
+        NSUserDefaults.standardUserDefaults().setObject(moviesData, forKey: KEY_MOVIES)
+        
+    }
+    
+    func loadMovies() {
+        if let moviesData = NSUserDefaults.standardUserDefaults().objectForKey(KEY_MOVIES) as? NSData {
+            if let moviesArray = NSKeyedUnarchiver.unarchiveObjectWithData(moviesData) as? [Movie] {
+                _loadedMovies = moviesArray
+            }
+        }
+        
+        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "moviesLoaded", object: nil))
+        
+    }
+    
+    func saveImgAndCreatePath(image: UIImage) {
+        
+    }
+    
+    func imageForPath(path: String) {
+        
+    }
+    
+    func addMovie(movie: Movie) {
+        _loadedMovies.append(movie)
+        saveMovies()
+        loadedMovies
+    }
+}
 
 

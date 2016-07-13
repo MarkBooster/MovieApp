@@ -40,6 +40,8 @@ class AddVC: UIViewController {
     @IBAction func confirmBtnPressed(sender: UIButton) {
         if movieUrl.text != nil && movieUrl.text != "" && movieOpinion.text != nil && movieOpinion.text != "" {
             self.movieOpinionStr = movieOpinion.text!
+            var movie = Movie(movieImg: "", movieTitle: movieTitle, movieOpinion: movieOpinionStr, movieUrl: "")
+            DataService.instance.addMovie(movie)
             print(movieTitle)
             print(movieOpinionStr)
             performSegueWithIdentifier("MainVC", sender: nil)
