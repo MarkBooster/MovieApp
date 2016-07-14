@@ -24,6 +24,7 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         return 1
     }
     
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DataService.instance.loadedMovies.count
     }

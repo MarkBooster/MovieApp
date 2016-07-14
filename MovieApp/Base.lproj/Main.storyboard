@@ -5,6 +5,20 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--MainVC-->
         <scene sceneID="tne-QT-ifu">
@@ -305,13 +319,16 @@
                                     <constraint firstItem="ff3-Pm-0mM" firstAttribute="top" secondItem="Y14-cN-UfC" secondAttribute="top" constant="20" id="pG0-nR-wQO"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://www.imdb.com/title/tt0137523/?ref_=tt_rec_tt" borderStyle="roundedRect" placeholder="URL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6x4-FT-brO">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="URL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6x4-FT-brO">
                                 <rect key="frame" x="20" y="170" width="560" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="YNW-qO-fUe"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="urlHasBeenTyped:" destination="i5J-Cy-u5v" eventType="editingChanged" id="oLM-HZ-L06"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Opinion" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qYS-uU-VjD">
                                 <rect key="frame" x="20" y="300" width="560" height="50"/>
@@ -320,6 +337,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="opinionHasBeenTyped:" destination="i5J-Cy-u5v" eventType="editingChanged" id="WdM-KO-PYz"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2VF-0K-hk8">
                                 <rect key="frame" x="250" y="410" width="100" height="30"/>
@@ -351,8 +371,8 @@
                     </view>
                     <connections>
                         <outlet property="movieOpinion" destination="qYS-uU-VjD" id="TCf-pb-Y95"/>
-                        <outlet property="movieUrl" destination="6x4-FT-brO" id="PGZ-e9-48r"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="MainVC" id="dMo-S4-fpT"/>
+                        <outlet property="movieUrl" destination="6x4-FT-brO" id="1gB-qU-TVg"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="MainVC" id="JE8-cy-nSI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FxL-cN-ca8" userLabel="First Responder" sceneMemberID="firstResponder"/>

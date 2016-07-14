@@ -13,24 +13,12 @@ class AddVC: UIViewController {
     @IBOutlet weak var movieUrl: UITextField!
     @IBOutlet weak var movieOpinion: UITextField!
     
-    var movieTitle = String()
-    var movieOpinionStr = String()
+    var movieTitle = ""
+    var movieOpinionStr = ""
+    var Url = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let url = NSURL(string: movieUrl.text!)!
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
-            if let responseData = data {
-                let webContent = NSString(data: responseData, encoding: NSUTF8StringEncoding)!
-                let websiteArray = webContent.componentsSeparatedByString("<title>")
-                if websiteArray.count > 0 {
-                    let titleArray = websiteArray[1].componentsSeparatedByString(" (")
-                    self.movieTitle = titleArray[0]
-                }
-            }
-        }
-        task.resume()
     }
     
     @IBAction func backBtnPressed(sender: UIButton) {
@@ -38,25 +26,41 @@ class AddVC: UIViewController {
     }
     
     @IBAction func confirmBtnPressed(sender: UIButton) {
-        if movieUrl.text != nil && movieUrl.text != "" && movieOpinion.text != nil && movieOpinion.text != "" {
-            self.movieOpinionStr = movieOpinion.text!
-            var movie = Movie(movieImg: "", movieTitle: movieTitle, movieOpinion: movieOpinionStr, movieUrl: "")
-            DataService.instance.addMovie(movie)
-            print(movieTitle)
-            print(movieOpinionStr)
-            performSegueWithIdentifier("MainVC", sender: nil)
+            if movieTitle != "" && movieOpinionStr != "" {
+                let movie = Movie(movieImg: "", movieTitle: movieTitle, movieOpinion: movieOpinionStr, movieUrl: Url)
+                DataService.instance.addMovie(movie)
+                performSegueWithIdentifier("MainVC", sender: nil)
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "MainVC" {
-            if let mainVC = segue.destinationViewController as? MainVC {
+    @IBAction func urlHasBeenTyped(textField: UITextField) {
+        let url = NSURL(string: movieUrl.text!)!
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
+            if let responseData = data {
+                let webContent = NSString(data: responseData, encoding: NSUTF8StringEncoding)!
+                let websiteArray = webContent.componentsSeparatedByString("<title>")
+                if websiteArray.count > 0 {
+                    let titleArray = websiteArray[1].componentsSeparatedByString(" (")
+                    
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.movieTitle = titleArray[0]
+                        self.Url = String(url)
+                    })
+                }
             }
         }
+        task.resume()
+        print(movieTitle)
     }
     
-    func addMovie(movie: Movie) {
-        
+    @IBAction func opinionHasBeenTyped(sender: UITextField) {
+        movieOpinionStr = movieOpinion.text!
+        print(movieOpinionStr)
     }
+    
+    
+    
+    
+    
 
 }
