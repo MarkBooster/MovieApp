@@ -86,7 +86,7 @@
                                                         <constraint firstAttribute="width" constant="100" id="lj8-8r-4YH"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Lord of the Rings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wqr-6m-Mqe">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Lord of the Rings" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="wqr-6m-Mqe">
                                                     <rect key="frame" x="116" y="10" width="476" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="Xcr-fa-sHa"/>
@@ -95,7 +95,7 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Omdat het gewoon de mooiste film ooit is." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWM-YQ-9v4">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Omdat het gewoon de mooiste film ooit is." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="fWM-YQ-9v4">
                                                     <rect key="frame" x="116" y="40" width="476" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="B3G-KQ-lOr"/>
@@ -104,7 +104,7 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.thelordoftherings.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMq-Iq-X1d">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.thelordoftherings.com" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="dMq-Iq-X1d">
                                                     <rect key="frame" x="116" y="88" width="476" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="Fk5-l9-fye"/>
@@ -319,7 +319,7 @@
                                     <constraint firstItem="ff3-Pm-0mM" firstAttribute="top" secondItem="Y14-cN-UfC" secondAttribute="top" constant="20" id="pG0-nR-wQO"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="URL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6x4-FT-brO">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="IMDB-URL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6x4-FT-brO">
                                 <rect key="frame" x="20" y="170" width="560" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="YNW-qO-fUe"/>
@@ -330,13 +330,13 @@
                                     <action selector="urlHasBeenTyped:" destination="i5J-Cy-u5v" eventType="editingChanged" id="oLM-HZ-L06"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Opinion" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qYS-uU-VjD">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Opinion" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="qYS-uU-VjD">
                                 <rect key="frame" x="20" y="300" width="560" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="BlZ-dd-x77"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
                                     <action selector="opinionHasBeenTyped:" destination="i5J-Cy-u5v" eventType="editingChanged" id="WdM-KO-PYz"/>
                                 </connections>

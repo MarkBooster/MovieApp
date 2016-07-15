@@ -50,12 +50,10 @@ class AddVC: UIViewController {
             }
         }
         task.resume()
-        print(movieTitle)
     }
     
     @IBAction func opinionHasBeenTyped(sender: UITextField) {
         movieOpinionStr = movieOpinion.text!
-        print(movieOpinionStr)
     }
     
     
