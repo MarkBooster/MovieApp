@@ -16,6 +16,7 @@ class AddVC: UIViewController {
     var movieTitle = ""
     var movieOpinionStr = ""
     var Url = ""
+    var moviePlot = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class AddVC: UIViewController {
     
     @IBAction func confirmBtnPressed(sender: UIButton) {
             if movieTitle != "" && movieOpinionStr != "" {
-                let movie = Movie(movieImg: "", movieTitle: movieTitle, movieOpinion: movieOpinionStr, movieUrl: Url)
+                let movie = Movie(movieImg: "", movieTitle: movieTitle, movieOpinion: movieOpinionStr, movieUrl: Url, moviePlot: moviePlot)
                 DataService.instance.addMovie(movie)
                 performSegueWithIdentifier("MainVC", sender: nil)
         }

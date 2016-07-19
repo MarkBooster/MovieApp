@@ -28,7 +28,4 @@ class MovieCell: UITableViewCell {
         movieOpinion.text = movie.movieOpinion
         movieUrl.text = movie.movieUrl
     }
-
-
-
 }

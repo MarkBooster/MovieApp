@@ -24,7 +24,7 @@ class DataService {
     func saveMovies() {
         let moviesData = NSKeyedArchiver.archivedDataWithRootObject(_loadedMovies)
         NSUserDefaults.standardUserDefaults().setObject(moviesData, forKey: KEY_MOVIES)
-        
+        NSUserDefaults.standardUserDefaults().synchronize()
     }
     
     func loadMovies() {
@@ -35,7 +35,6 @@ class DataService {
         }
         
         NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "moviesLoaded", object: nil))
-        
     }
     
     func saveImgAndCreatePath(image: UIImage) {
@@ -49,7 +48,7 @@ class DataService {
     func addMovie(movie: Movie) {
         _loadedMovies.append(movie)
         saveMovies()
-        loadedMovies
+        loadMovies()
     }
 }
 

@@ -22,5 +22,4 @@ class Movies: NSManagedObject {
         let img = UIImage(data: self.image!)!
         return img
     }
-
 }
