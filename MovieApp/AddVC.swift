@@ -12,10 +12,12 @@ class AddVC: UIViewController {
     
     @IBOutlet weak var movieUrl: UITextField!
     @IBOutlet weak var movieOpinion: UITextField!
+    @IBOutlet weak var img: UIImageView!
     
+    var movieImg: UIImage!
     var movieTitle = ""
     var movieOpinionStr = ""
-    var Url = ""
+    var movieUrlStr = ""
     var moviePlot = ""
 
     override func viewDidLoad() {
@@ -28,29 +30,30 @@ class AddVC: UIViewController {
     
     @IBAction func confirmBtnPressed(sender: UIButton) {
             if movieTitle != "" && movieOpinionStr != "" {
-                let movie = Movie(movieImg: "", movieTitle: movieTitle, movieOpinion: movieOpinionStr, movieUrl: Url, moviePlot: moviePlot)
+                let movie = Movie(movieImg: movieImg, movieTitle: movieTitle, movieOpinion: movieOpinionStr, movieUrl: movieUrlStr, moviePlot: moviePlot)
                 DataService.instance.addMovie(movie)
                 performSegueWithIdentifier("MainVC", sender: nil)
         }
     }
     
     @IBAction func urlHasBeenTyped(textField: UITextField) {
-        let url = NSURL(string: movieUrl.text!)!
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
-            if let responseData = data {
-                let webContent = NSString(data: responseData, encoding: NSUTF8StringEncoding)!
-                let websiteArray = webContent.componentsSeparatedByString("<title>")
-                if websiteArray.count > 0 {
-                    let titleArray = websiteArray[1].componentsSeparatedByString(" (")
-                    
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.movieTitle = titleArray[0]
-                        self.Url = String(url)
-                    })
-                }
-            }
+        let downloadManager = DownloadService()
+        downloadManager.urll = movieUrl.text
+        self.movieUrlStr = movieUrl.text!
+        downloadManager.downloadTitle { (title) in
+            dispatch_async(dispatch_get_main_queue(), { 
+                self.movieTitle = title
+                
+                print(self.movieTitle)
+            })
+            downloadManager.downloadImage({ (image) in
+                dispatch_async(dispatch_get_main_queue(), { 
+                    self.movieImg = image
+                    self.img.image = image
+                })
+            })
         }
-        task.resume()
+
     }
     
     @IBAction func opinionHasBeenTyped(sender: UITextField) {

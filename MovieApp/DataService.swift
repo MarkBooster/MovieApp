@@ -30,7 +30,8 @@ class DataService {
     func loadMovies() {
         if let moviesData = NSUserDefaults.standardUserDefaults().objectForKey(KEY_MOVIES) as? NSData {
             if let moviesArray = NSKeyedUnarchiver.unarchiveObjectWithData(moviesData) as? [Movie] {
-                _loadedMovies = moviesArray
+                self._loadedMovies = moviesArray
+                self._loadedMovies = self._loadedMovies.reverse()
             }
         }
         

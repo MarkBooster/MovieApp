@@ -7,16 +7,17 @@
 //
 
 import Foundation
+import UIKit
 
 class Movie: NSObject, NSCoding {
     
-    private var _movieImg: String!
+    private var _movieImg: UIImage!
     private var _movieTitle: String!
     private var _movieOpinion: String!
     private var _movieUrl: String!
     private var _moviePlot: String!
     
-    var movieImg: String {
+    var movieImg: UIImage {
         return _movieImg
     }
     
@@ -36,7 +37,7 @@ class Movie: NSObject, NSCoding {
         return _moviePlot
     }
     
-    init(movieImg: String, movieTitle: String, movieOpinion: String, movieUrl: String, moviePlot: String) {
+    init(movieImg: UIImage, movieTitle: String, movieOpinion: String, movieUrl: String, moviePlot: String) {
         self._movieImg = movieImg
         self._movieTitle = movieTitle
         self._movieOpinion = movieOpinion
@@ -57,7 +58,7 @@ class Movie: NSObject, NSCoding {
     
     required convenience init?(coder aDecoder: NSCoder) {
         self.init()
-        self._movieImg = aDecoder.decodeObjectForKey("movieImg") as? String
+        self._movieImg = aDecoder.decodeObjectForKey("movieImg") as? UIImage
         self._movieTitle = aDecoder.decodeObjectForKey("title") as? String
         self._movieOpinion = aDecoder.decodeObjectForKey("opinion") as? String
         self._movieUrl = aDecoder.decodeObjectForKey("url") as? String

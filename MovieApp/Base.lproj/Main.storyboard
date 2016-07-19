@@ -319,7 +319,7 @@
                                     <constraint firstItem="ff3-Pm-0mM" firstAttribute="top" secondItem="Y14-cN-UfC" secondAttribute="top" constant="20" id="pG0-nR-wQO"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="IMDB-URL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6x4-FT-brO">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="IMDB-URL" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6x4-FT-brO">
                                 <rect key="frame" x="20" y="170" width="560" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="YNW-qO-fUe"/>
@@ -327,7 +327,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="urlHasBeenTyped:" destination="i5J-Cy-u5v" eventType="editingChanged" id="oLM-HZ-L06"/>
+                                    <action selector="urlHasBeenTyped:" destination="i5J-Cy-u5v" eventType="editingDidEnd" id="1ak-5d-DPE"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Opinion" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="qYS-uU-VjD">
@@ -338,7 +338,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
-                                    <action selector="opinionHasBeenTyped:" destination="i5J-Cy-u5v" eventType="editingChanged" id="WdM-KO-PYz"/>
+                                    <action selector="opinionHasBeenTyped:" destination="i5J-Cy-u5v" eventType="editingChanged" id="1RJ-Rc-Fc6"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2VF-0K-hk8">
@@ -353,11 +353,20 @@
                                     <action selector="confirmBtnPressed:" destination="i5J-Cy-u5v" eventType="touchUpInside" id="nbP-uM-yvt"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K2N-RO-L7d">
+                                <rect key="frame" x="65" y="410" width="135" height="105"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="135" id="HsK-DU-SrM"/>
+                                    <constraint firstAttribute="height" constant="105" id="NzS-Ha-Jzt"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6x4-FT-brO" firstAttribute="trailing" secondItem="9JC-TD-fiD" secondAttribute="trailingMargin" id="51l-5v-4iA"/>
                             <constraint firstItem="2VF-0K-hk8" firstAttribute="centerX" secondItem="9JC-TD-fiD" secondAttribute="centerX" id="AN6-lP-k5B"/>
+                            <constraint firstItem="ZB1-P0-DDd" firstAttribute="top" secondItem="K2N-RO-L7d" secondAttribute="bottom" constant="85" id="FCJ-4y-0lu"/>
+                            <constraint firstItem="K2N-RO-L7d" firstAttribute="leading" secondItem="9JC-TD-fiD" secondAttribute="leadingMargin" constant="45" id="FLQ-b8-gfw"/>
                             <constraint firstItem="qYS-uU-VjD" firstAttribute="top" secondItem="6x4-FT-brO" secondAttribute="bottom" constant="80" id="TBP-kK-Az8"/>
                             <constraint firstItem="qYS-uU-VjD" firstAttribute="trailing" secondItem="9JC-TD-fiD" secondAttribute="trailingMargin" id="TGv-Zq-bPW"/>
                             <constraint firstItem="Y14-cN-UfC" firstAttribute="top" secondItem="9JC-TD-fiD" secondAttribute="top" id="cgB-6W-hfX"/>
@@ -370,6 +379,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="img" destination="K2N-RO-L7d" id="2Q7-iF-6ly"/>
                         <outlet property="movieOpinion" destination="qYS-uU-VjD" id="TCf-pb-Y95"/>
                         <outlet property="movieUrl" destination="6x4-FT-brO" id="1gB-qU-TVg"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="MainVC" id="JE8-cy-nSI"/>

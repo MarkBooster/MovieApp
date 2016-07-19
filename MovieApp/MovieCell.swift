@@ -23,7 +23,7 @@ class MovieCell: UITableViewCell {
     }
     
     func configureCell(movie: Movie) {
-        //De afbeelding moet nog...
+        movieImg.image = movie.movieImg
         movieTitle.text = movie.movieTitle
         movieOpinion.text = movie.movieOpinion
         movieUrl.text = movie.movieUrl
