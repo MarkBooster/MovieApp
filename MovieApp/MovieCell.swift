@@ -17,7 +17,6 @@ class MovieCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         movieImg.layer.cornerRadius = 20
         movieImg.clipsToBounds = true
     }
